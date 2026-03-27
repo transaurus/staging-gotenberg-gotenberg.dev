@@ -1,0 +1,38 @@
+---
+id: head-health-check
+title: Health Check
+---
+
+import ApiEndpoint from "@site/src/components/documentation/ApiEndpoint";
+import Sponsors from "@site/src/components/documentation/Sponsors";
+
+Same as the GET health check but returns no body. Ideal for high-frequency polling where you only need the status code.
+
+<ApiEndpoint
+  method="HEAD"
+  path="/health"
+  headers={[
+    {
+      name: "Gotenberg-Trace",
+      type: "string",
+      required: false,
+      description:
+        "A custom request ID to identify the request in the logs; overrides the default UUID.",
+    },
+  ]}
+  curl={`curl --request HEAD http://localhost:3000/health`}
+  responses={[
+    {
+      status: 200,
+      message: "OK",
+      description: "The service is healthy.",
+    },
+    {
+      status: 503,
+      message: "Service Unavailable",
+      description: "The service in unhealthy.",
+    },
+  ]}
+/>
+
+<Sponsors />

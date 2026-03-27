@@ -1,0 +1,43 @@
+---
+id: debug
+title: Debug
+---
+
+import ApiEndpoint from "@site/src/components/documentation/ApiEndpoint";
+import Sponsors from "@site/src/components/documentation/Sponsors";
+
+Returns the runtime configuration, active modules, and dependency versions (Chromium, LibreOffice). Useful for troubleshooting and verifying startup flags.
+
+Only available when `API_ENABLE_DEBUG_DATA` is set to `true`.
+
+<ApiEndpoint
+  method="GET"
+  path="/debug"
+  headers={[
+    {
+      name: "Gotenberg-Trace",
+      type: "string",
+      required: false,
+      description:
+        "A custom request ID to identify the request in the logs; overrides the default UUID.",
+    },
+  ]}
+  curl={`curl --request GET http://localhost:3000/debug`}
+  responses={[
+    {
+      status: 200,
+      message: "OK",
+      description: (
+        <span>
+          See{" "}
+          <a href="https://demo.gotenberg.dev/debug">
+            https://demo.gotenberg.dev/debug
+          </a>{" "}
+          for details.
+        </span>
+      ),
+    },
+  ]}
+/>
+
+<Sponsors />

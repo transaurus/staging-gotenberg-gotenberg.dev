@@ -1,0 +1,155 @@
+/* --- SHARED STRIP STYLES --- */
+.sponsorsStrip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 4rem;
+  padding: 3rem 1rem;
+  border-top: 1px dashed #e2e8f0;
+}
+
+/* Force override global Docusaurus link styles */
+.sponsorsStrip a {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center;
+}
+
+.sponsorCategory {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.sponsorStripLabel {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.1em;
+  user-select: none;
+}
+
+.sponsorDivider {
+  width: 1px;
+  height: 24px;
+  background-color: #e2e8f0;
+}
+
+.logoStrip {
+  width: auto;
+  filter: grayscale(100%) opacity(0.6);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: block;
+}
+
+.logoStrip:hover {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.08);
+}
+
+.logoWide {
+  height: 52px;
+}
+.logoSquare {
+  height: 22px;
+}
+
+.sponsorButton {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #e11d48 !important;
+  text-decoration: underline;
+  text-decoration-color: rgba(225, 29, 72, 0.3);
+  text-underline-offset: 3px;
+  transition: all 0.3s ease;
+}
+
+.sponsorButton:hover {
+  opacity: 1;
+  text-decoration-color: #e11d48;
+  text-shadow: 0 0 12px rgba(225, 29, 72, 0.5);
+  transform: translateY(-1px);
+}
+
+.sponsorButton svg {
+  animation: sponsorHeartbeat 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(225, 29, 72, 0.2));
+}
+
+@keyframes sponsorHeartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.2);
+  }
+  20% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+.heart {
+  display: inline-block;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* --- MOBILE VARIANT: TWO STRIPS + CTA --- */
+@media (max-width: 996px) {
+  .sponsorsStrip {
+    flex-direction: column; /* Stack the groups */
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  .sponsorDivider {
+    display: none; /* Dividers aren't needed when stacked */
+  }
+
+  .sponsorCategory {
+    width: 100%;
+    justify-content: center; /* Keep the logos in a row within their strip */
+    gap: 1.25rem;
+  }
+
+  .logoWide {
+    height: 36px; /* Slightly smaller for mobile */
+  }
+
+  .logoSquare {
+    height: 18px;
+  }
+
+  .ctaWrapper {
+    margin-top: 0.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

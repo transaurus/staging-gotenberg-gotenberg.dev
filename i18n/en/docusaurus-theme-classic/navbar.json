@@ -1,0 +1,34 @@
+{
+  "title": {
+    "message": "Gotenberg",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Gotenberg Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Documentation": {
+    "message": "Documentation",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.Help": {
+    "message": "Help",
+    "description": "Navbar item with label Help"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "item.label.Awesome": {
+    "message": "Awesome",
+    "description": "Navbar item with label Awesome"
+  },
+  "item.label.PHP SDK": {
+    "message": "PHP SDK",
+    "description": "Navbar item with label PHP SDK"
+  },
+  "item.label.Upgrade from 7.x": {
+    "message": "Upgrade from 7.x",
+    "description": "Navbar item with label Upgrade from 7.x"
+  }
+}

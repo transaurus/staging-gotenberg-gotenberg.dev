@@ -1,0 +1,122 @@
+---
+id: installation
+title: Installation
+---
+
+import Sponsors from "@site/src/components/documentation/Sponsors";
+
+Don't expose Gotenberg to the public internet. Treat it like a database: keep it behind your firewall.
+
+## Live Demo
+
+Try the API without installing anything:
+
+- https://demo.gotenberg.dev
+
+Open a terminal and run:
+
+```bash
+curl \
+--request POST https://demo.gotenberg.dev/forms/chromium/convert/url \
+--form url=https://sparksuite.github.io/simple-html-invoice-template/ \
+-o my.pdf
+```
+
+The demo runs on a [Render](https://render.com) instance (512MB RAM, 0.5 CPU) with rate limits: 2 requests/second per IP, 5MB body limit.
+
+## Docker
+
+```bash
+docker run --rm -p "3000:3000" gotenberg/gotenberg:8
+```
+
+The API is now available at [http://localhost:3000](http://localhost:3000).
+
+By default, published ports are accessible from the outside world. Bind to localhost for a more secure setup:
+
+```bash
+docker run --rm -p "127.0.0.1:3000:3000" gotenberg/gotenberg:8
+```
+
+## Docker Compose
+
+```yaml title="compose.yaml"
+services:
+  # Your other services.
+
+  gotenberg:
+    image: gotenberg/gotenberg:8
+```
+
+Other services in the same Compose network can reach Gotenberg at `gotenberg:3000`.
+
+To also expose it on your host, add a `ports` section:
+
+```yaml title="compose.yaml"
+services:
+  # Your other services.
+
+  gotenberg:
+    image: gotenberg/gotenberg:8
+    ports:
+      - "3000:3000"
+      # Or more secure:
+      # - "127.0.0.1:3000:3000"
+```
+
+## Kubernetes
+
+The image runs as a non-root user `gotenberg` (UID/GID **1001**). Since _8.21.0_, [arbitrary user IDs (OpenShift)](https://docs.redhat.com/en/documentation/openshift_container_platform/4.15/html/images/creating-images#enable-images-for-source-to-image_create-images) are also supported.
+
+Include this in your pod’s deployment spec:
+
+```yaml
+securityContext:
+  readOnlyRootFilesystem: false
+  allowPrivilegeEscalation: false
+  privileged: false
+  runAsUser: 1001 # unless using an arbitrarily assigned user ID.
+```
+
+Allocate at least 512Mi of memory and 0.2 CPU. A community-maintained Helm chart is available at [MaikuMori/helm-charts](https://github.com/MaikuMori/helm-charts) ([ArtifactHub](https://artifacthub.io/packages/helm/maikumori/gotenberg)).
+
+## Cloud Run
+
+```
+gotenberg/gotenberg:8-cloudrun
+```
+
+Preconfigured for Cloud Run:
+
+- Uses the `PORT` environment variable provided by Cloud Run.
+- Logs in a format compatible with Cloud Run.
+- Auto-starts Chromium and LibreOffice for faster readiness.
+- Uses synchronous webhook mode, since Cloud Run may stop the container if there’s no HTTP activity.
+
+Allocate at least 1Gi of memory for a [smooth experience](https://github.com/gotenberg/gotenberg/issues/950#issuecomment-2329228662). Consider HTTP/2 to bypass the [32MB request size limit](https://cloud.google.com/run/quotas?hl=en).
+
+## AWS Lambda (Beta)
+
+Available on `linux/amd64` and `linux/arm64`:
+
+```
+gotenberg/gotenberg:8-aws-lambda
+```
+
+Preconfigured for AWS Lambda:
+
+- Uses the `AWS_LWA_PORT` environment variable to configure its port.
+- Set `AWS_LWA_READINESS_CHECK_PATH` with the route `/health`.
+- Set `AWS_LWA_INVOKE_MODE` with the value `buffered`.
+- Uses synchronous webhook mode, since AWS may stop the container if there’s no HTTP activity.
+- See https://github.com/awslabs/aws-lambda-web-adapter for more AWS related options.
+
+The `buffered` invoke mode supports responses up to 6MB. For larger outputs, use the webhook feature to upload results to S3.
+
+There is an [ongoing discussion](https://github.com/gotenberg/gotenberg/issues/540) about improving this variant. Feedback welcome.
+
+## What's Next?
+
+Install a [client](clients) or jump to the [routes guide](/docs/convert-with-chromium/convert-url-to-pdf).
+
+<Sponsors />

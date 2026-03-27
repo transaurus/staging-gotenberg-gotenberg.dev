@@ -1,0 +1,40 @@
+---
+id: version
+title: Version
+---
+
+import ApiEndpoint from "@site/src/components/documentation/ApiEndpoint";
+import Sponsors from "@site/src/components/documentation/Sponsors";
+
+Returns the version of the running Gotenberg instance. Useful for verifying deployments.
+
+Custom variants may not print strict semver. For instance, the live demo prints `{semver}-live-demo-snapshot`.
+
+<ApiEndpoint
+  method="GET"
+  path="/version"
+  headers={[
+    {
+      name: "Gotenberg-Trace",
+      type: "string",
+      required: false,
+      description: "A custom request ID to identify the request in the logs; overrides the default UUID."
+    },
+  ]}
+  curl={`curl --request GET http://localhost:3000/version`}
+  responses={[
+    {
+      status: 200,
+      message: "OK",
+      description: "The Gotenberg version.",
+      body: `Content-Type: text/plain; charset=UTF-8
+Gotenberg-Trace: {trace}
+Body:
+
+{semver}
+`,
+},
+]}
+/>
+
+<Sponsors />
