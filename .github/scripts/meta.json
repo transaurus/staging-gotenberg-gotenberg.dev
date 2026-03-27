@@ -1,0 +1,10 @@
+{
+  "sourceUrl": "https://github.com/gotenberg/gotenberg.dev",
+  "branch": "main",
+  "docusaurusRoot": ".",
+  "configFile": "docusaurus.config.js",
+  "translateCommand": "npm run write-translations",
+  "buildCommand": "npm run build",
+  "buildOutput": "build",
+  "packageManager": "npm"
+}
