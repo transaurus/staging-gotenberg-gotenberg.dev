@@ -1,0 +1,42 @@
+{
+  "version.label": {
+    "message": "8.x",
+    "description": "The label for version current"
+  },
+  "sidebar.version-8.x.category.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label for category 'Getting Started' in sidebar 'version-8.x'"
+  },
+  "sidebar.version-8.x.category.Convert with Chromium": {
+    "message": "Convert with Chromium",
+    "description": "The label for category 'Convert with Chromium' in sidebar 'version-8.x'"
+  },
+  "sidebar.version-8.x.category.Convert with LibreOffice": {
+    "message": "Convert with LibreOffice",
+    "description": "The label for category 'Convert with LibreOffice' in sidebar 'version-8.x'"
+  },
+  "sidebar.version-8.x.category.Manipulate PDFs": {
+    "message": "Manipulate PDFs",
+    "description": "The label for category 'Manipulate PDFs' in sidebar 'version-8.x'"
+  },
+  "sidebar.version-8.x.category.System": {
+    "message": "System",
+    "description": "The label for category 'System' in sidebar 'version-8.x'"
+  },
+  "sidebar.version-8.x.link.Upgrade from 7.x": {
+    "message": "Upgrade from 7.x",
+    "description": "The label for link 'Upgrade from 7.x' in sidebar 'version-8.x', linking to 'https://github.com/gotenberg/gotenberg/releases/tag/v8.0.0'"
+  },
+  "sidebar.version-8.x.doc.Webhook & Download": {
+    "message": "Webhook & Download",
+    "description": "The label for the doc item 'Webhook & Download' in sidebar 'version-8.x', linking to the doc webhook-download"
+  },
+  "sidebar.version-8.x.doc.Configuration": {
+    "message": "Configuration",
+    "description": "The label for the doc item 'Configuration' in sidebar 'version-8.x', linking to the doc configuration"
+  },
+  "sidebar.version-8.x.doc.Troubleshooting": {
+    "message": "Troubleshooting",
+    "description": "The label for the doc item 'Troubleshooting' in sidebar 'version-8.x', linking to the doc troubleshooting"
+  }
+}

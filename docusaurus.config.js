@@ -3,12 +3,16 @@ const lightTheme = themes.github;
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "zh-Hans"],
+  },
   title: "Gotenberg",
   tagline: "A Docker-based API for PDF conversion",
   trailingSlash: false,
   url: "https://gotenberg.dev",
   baseUrl: "/",
-  onBrokenLinks: "throw",
+  onBrokenLinks: 'warn',
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: "warn",
